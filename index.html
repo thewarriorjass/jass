@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transform Your Body | The Edmonds Twins Coaching Application</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #4f09c8;
+      --primary-light: #7d5fff;
+      --primary-lighter: #a881ff;
+      --background: #f6f0ff;
+      --text: #422b69;
+      --success: #4caf50;
+      --error: #dc2626;
+    }
+    
+    body {
+      background-color: var(--background);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(to right, var(--primary-light), var(--primary));
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      background: linear-gradient(to right, var(--primary), var(--primary-light));
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(79, 9, 200, 0.3);
+    }
+    
+    .btn-secondary {
+      background: white;
+      border: 1px solid #ddd;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-secondary:hover {
+      background: #f9f9f9;
+      border-color: #ccc;
+    }
+    
+    .progress-bar {
+      background: linear-gradient(to right, var(--primary), var(--primary-lighter));
+      height: 6px;
+      transition: width 0.5s ease;
+    }
+    
+    .input-focus:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(125, 95, 255, 0.2);
+    }
+    
+    .testimonial-card {
+      background: white;
+      border-left: 4px solid var(--primary);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .success-state {
+      background-color: #e8f5e9;
+    }
+    
+    .floating-help {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(79, 9, 200, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(79, 9, 200, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(79, 9, 200, 0); }
+    }
+    
+    @media (max-width: 640px) {
+      .mobile-sticky-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 1rem;
+        background: white;
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        z-index: 40;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Floating Help Button -->
+  <button class="floating-help fixed bottom-6 right-6 bg-white p-4 rounded-full shadow-lg text-purple-800 z-50 hover:bg-purple-50 transition-all pulse">
+    <i class="fas fa-question-circle text-xl"></i>
+  </button>
+
+  <div class="container mx-auto px-4 py-8 max-w-4xl">
+    <!-- Progress Bar -->
+    <div class="mb-8">
+      <div class="h-1 bg-gray-200 rounded-full w-full mb-2">
+        <div id="progressBar" class="progress-bar rounded-full" style="width: 25%"></div>
+      </div>
+      <p id="stepIndicator" class="text-sm font-medium text-purple-800">Step 1 of 4: Tell Us About Yourself</p>
+    </div>
+    
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <h1 class="text-3xl md:text-4xl font-bold text-purple-900 mb-2">Start Your Transformation Journey</h1>
+      <p class="text-lg text-purple-700 max-w-2xl mx-auto">Join 1,200+ clients who've transformed their bodies with our proven system</p>
+    </div>
+    
+    <!-- Coach Info -->
+    <div class="flex flex-col md:flex-row items-center justify-center gap-6 p-6 bg-white rounded-xl shadow-sm mb-8 hover:shadow-md transition-shadow duration-300">
+      <img src="https://via.placeholder.com/150" alt="The Edmonds Twins" class="rounded-full w-24 h-24 md:w-32 md:h-32 object-cover border-4 border-purple-200">
+      <div class="text-center md:text-left">
+        <h2 class="text-xl md:text-2xl font-bold text-purple-900">The Edmonds Twins</h2>
+        <p class="text-sm text-purple-600 max-w-md">Certified fitness coaches with over 10 years of experience helping clients transform their bodies and lives.</p>
+        <div class="mt-2 flex justify-center md:justify-start space-x-2">
+          <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">10+ Years Experience</span>
+          <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">1,200+ Clients</span>
+          <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">97% Success Rate</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Trust Badges -->
+    <div class="flex flex-wrap justify-center gap-4 mb-8">
+      <div class="flex items-center text-sm text-purple-700 bg-purple-50 px-3 py-1 rounded-full">
+        <i class="fas fa-lock mr-2"></i> Secure Form
+      </div>
+      <div class="flex items-center text-sm text-purple-700 bg-purple-50 px-3 py-1 rounded-full">
+        <i class="fas fa-user-shield mr-2"></i> 100% Confidential
+      </div>
+      <div class="flex items-center text-sm text-purple-700 bg-purple-50 px-3 py-1 rounded-full">
+        <i class="fas fa-star mr-2"></i> Premium Coaching
+      </div>
+    </div>
+    
+    <!-- Form Container -->
+    <div id="formContainer" class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300">
+      <!-- Multi-Step Form -->
+      <form id="applicationForm" class="divide-y divide-gray-200">
+        <!-- Step 1: Personal Info -->
+        <div id="step1" class="step p-6 md:p-8">
+          <h2 class="text-xl font-bold text-purple-900 mb-6">Let's Get Started</h2>
+          
+          <div class="space-y-6">
+            <!-- Full Name -->
+            <div>
+              <label for="fullName" class="block text-sm font-medium text-purple-800 mb-1">Full Name *</label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <i class="fas fa-user text-purple-400"></i>
+                </div>
+                <input type="text" id="fullName" name="fullName" required 
+                       class="pl-10 w-full rounded-lg border-gray-300 input-focus focus:ring-purple-500 py-3" 
+                       placeholder="First Name, Last Name">
+              </div>
+              <p class="mt-1 text-xs text-purple-500">We'll never share your info. This helps us personalize your journey.</p>
+            </div>
+            
+            <!-- Contact Info -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Phone -->
+              <div>
+                <label for="phone" class="block text-sm font-medium text-purple-800 mb-1">Phone Number *</label>
+                <div class="relative">
+                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <i class="fas fa-phone text-purple-400"></i>
+                  </div>
+                  <input type="tel" id="phone" name="phone" required 
+                         class="pl-10 w-full rounded-lg border-gray-300 input-focus focus:ring-purple-500 py-3" 
+                         placeholder="+61 - Area Code, Phone Number">
+                </div>
+              </div>
+              
+              <!-- Email -->
+              <div>
+                <label for="email" class="block text-sm font-medium text-purple-800 mb-1">Email Address *</label>
+                <div class="relative">
+                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <i class="fas fa-envelope text-purple-400"></i>
+                  </div>
+                  <input type="email" id="email" name="email" required 
+                         class="pl-10 w-full rounded-lg border-gray-300 input-focus focus:ring-purple-500 py-3" 
+                         placeholder="example@example.com">
+                </div>
+              </div>
+            </div>
+            
+            <!-- Instagram -->
+            <div>
+              <label for="instagram" class="block text-sm font-medium text-purple-800 mb-1">Instagram Handle</label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <i class="fab fa-instagram text-purple-400"></i>
+                </div>
+                <input type="text" id="instagram" name="instagram" 
+                       class="pl-10 w-full rounded-lg border-gray-300 input-focus focus:ring-purple-500 py-3" 
+                       placeholder="@yourusername (optional)">
+              </div>
+              <p class="mt-1 text-xs text-purple-500">Following us helps us get to know you better!</p>
+            </div>
+          </div>
+          
+          <!-- Navigation Buttons -->
+          <div class="mt-8 flex justify-end">
+            <button type="button" onclick="nextStep()" class="btn-primary text-white py-3 px-6 rounded-lg font-medium inline-flex items-center">
+              Continue <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Step 2: Demographics -->
+        <div id="step2" class="step hidden p-6 md:p-8">
+          <h2 class="text-xl font-bold text-purple-900 mb-6">Help Us Understand You Better</h2>
+          
+          <div class="space-y-6">
+            <!-- Gender -->
+            <div>
+              <label class="block text-sm font-medium text-purple-800 mb-2">Gender *</label>
+              <div class="grid grid-cols-3 gap-3">
+                <label class="flex items-center space-x-2 cursor-pointer p-3 rounded-lg border border-gray-200 hover:border-purple-300 transition-colors">
+                  <input type="radio" name="gender" value="Female" class="h-4 w-4 text-purple-600 focus:ring-purple-500" required>
+                  <span class="text-gray-700">Female</span>
+                </label>
+                <label class="flex items-center space-x-2 cursor-pointer p-3 rounded-lg border border-gray-200 hover:border-purple-300 transition-colors">
+                  <input type="radio" name="gender" value="Male" class="h-4 w-4 text-purple-600 focus:ring-purple-500">
+                  <span class="text-gray-700">Male</span>
+                </label>
+                <label class="flex items-center space-x-2 cursor-pointer p-3 rounded-lg border border-gray-200 hover:border-purple-300 transition-colors">
+                  <input type="radio" name="gender" value="Other" class="h-4 w-4 text-purple-600 focus:ring-purple-500">
+                  <span class="text-gray-700">Other</span>
+                </label>
+              </div>
+            </div>
+            
+            <!-- Referral Source -->
+            <div>
+              <label for="referral" class="block text-sm font-medium text-purple-800 mb-1">How Did You Hear About Us? *</label>
+              <select id="referral" name="referral" required class="mt-1 block w-full pl-3 pr-10 py-3 text-base border-gray-300 focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm rounded-lg">
+                <option value="">Please Select</option>
+                <option value="Social Media">Social Media</option>
+                <option value="Friend">Friend</option>
+                <option value="Google">Google</option>
+                <option value="Other">Other</option>
+              </select>
+              <p class="mt-1 text-xs text-purple-500">We appreciate your help in understanding what's working!</p>
+            </div>
+          </div>
+          
+          <!-- Navigation Buttons -->
+          <div class="mt-8 flex justify-between">
+            <button type="button" onclick="prevStep()" class="btn-secondary text-gray-700 py-3 px-6 rounded-lg font-medium inline-flex items-center">
+              <i class="fas fa-arrow-left mr-2"></i> Back
+            </button>
+            <button type="button" onclick="nextStep()" class="btn-primary text-white py-3 px-6 rounded-lg font-medium inline-flex items-center">
+              Continue <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Step 3: Goals & Services -->
+        <div id="step3" class="step hidden p-6 md:p-8">
+          <h2 class="text-xl font-bold text-purple-900 mb-6">Let's Get Clear On Your Goals</h2>
+          
+          <div class="space-y-6">
+            <!-- Services -->
+            <div>
+              <label class="block text-sm font-medium text-purple-800 mb-2">What Service Are You Interested In? *</label>
+              <div class="space-y-3">
+                <label class="flex items-start space-x-3 cursor-pointer p-3 rounded-lg border border-gray-200 hover:border-purple-300 transition-colors">
+                  <input type="checkbox" name="service" value="Premium Coaching Plan" class="h-5 w-5 text-purple-600 rounded focus:ring-purple-500 mt-1">
+                  <div>
+                    <span class="text-gray-700 font-medium">Premium Coaching Plan</span>
+                    <p class="text-xs text-gray-500">(Custom workouts, personalized nutrition, weekly check-ins)</p>
+                  </div>
+                </label>
+                <label class="flex items-start space-x-3 cursor-pointer p-3 rounded-lg border border-gray-200 hover:border-purple-300 transition-colors">
+                  <input type="checkbox" name="service" value="Tailored Training" class="h-5 w-5 text-purple-600 rounded focus:ring-purple-500 mt-1">
+                  <span class="text-gray-700 font-medium">Tailored Training</span>
+                </label>
+                <label class="flex items-start space-x-3 cursor-pointer p-3 rounded-lg border border-gray-200 hover:border-purple-300 transition-colors">
+                  <input type="checkbox" name="service" value="Personalized Nutrition" class="h-5 w-5 text-purple-600 rounded focus:ring-purple-500 mt-1">
+                  <span class="text-gray-700 font-medium">Personalized Nutrition</span>
+                </label>
+              </div>
+            </div>
+            
+            <!-- Goals -->
+            <div>
+              <label for="goals" class="block text-sm font-medium text-purple-800 mb-1">
+                What Are Your Goals & Challenges? *
+              </label>
+              <p class="text-xs text-purple-500 mb-2">
+                Tell us a bit about where you are now and what you'd like to achieve. This helps us match you with the best plan.
+              </p>
+              <textarea id="goals" name="goals" rows="3" required
+                        class="w-full rounded-lg border-gray-300 input-focus focus:ring-purple-500 p-3"></textarea>
+            </div>
+            
+            <!-- Main Goal -->
+            <div>
+              <label class="block text-sm font-medium text-purple-800 mb-2">What Is Your Main Goal? *</label>
+              <div class="grid grid-cols-3 gap-3">
+                <label class="flex items-center space-x-2 cursor-pointer p-3 rounded-lg border border-gray-200 hover:border-purple-300 transition-colors">
+                  <input type="radio" name="mainGoal" value="Fat Loss" class="h-4 w-4 text-purple-600 focus:ring-purple-500" required>
+                  <span class="text-gray-700">Fat Loss</span>
+                </label>
+                <label class="flex items-center space-x-2 cursor-pointer p-3 rounded-lg border border-gray-200 hover:border-purple-300 transition-colors">
+                  <input type="radio" name="mainGoal" value="Muscle Gain" class="h-4 w-4 text-purple-600 focus:ring-purple-500">
+                  <span class="text-gray-700">Muscle Gain</span>
+                </label>
+                <label class="flex items-center space-x-2 cursor-pointer p-3 rounded-lg border border-gray-200 hover:border-purple-300 transition-colors">
+                  <input type="radio" name="mainGoal" value="Both" class="h-4 w-4 text-purple-600 focus:ring-purple-500">
+                  <span class="text-gray-700">Both</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Navigation Buttons -->
+          <div class="mt-8 flex justify-between">
+            <button type="button" onclick="prevStep()" class="btn-secondary text-gray-700 py-3 px-6 rounded-lg font-medium inline-flex items-center">
+              <i class="fas fa-arrow-left mr-2"></i> Back
+            </button>
+            <button type="button" onclick="nextStep()" class="btn-primary text-white py-3 px-6 rounded-lg font-medium inline-flex items-center">
+              Continue <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Step 4: Commitment -->
+        <div id="step4" class="step hidden p-6 md:p-8">
+          <h2 class="text-xl font-bold text-purple-900 mb-6">Final Step: Your Commitment</h2>
+          
+          <div class="space-y-6">
+            <!-- Investment -->
+            <div>
+              <label class="block text-sm font-medium text-purple-800 mb-2">Are You Ready to Invest in Yourself? (Minimum $55/week) *</label>
+              <div class="grid grid-cols-2 gap-3">
+                <label class="flex items-center space-x-2 cursor-pointer p-3 rounded-lg border border-gray-200 hover:border-purple-300 transition-colors">
+                  <input type="radio" name="investment" value="Yes" class="h-4 w-4 text-purple-600 focus:ring-purple-500" required>
+                  <span class="text-gray-700">Yes, I'm ready</span>
+                </label>
+                <label class="flex items-center space-x-2 cursor-pointer p-3 rounded-lg border border-gray-200 hover:border-purple-300 transition-colors">
+                  <input type="radio" name="investment" value="No" class="h-4 w-4 text-purple-600 focus:ring-purple-500">
+                  <span class="text-gray-700">Not right now</span>
+                </label>
+              </div>
+              <p class="mt-2 text-xs text-purple-500">Our clients see the best results when they're fully committed to the process.</p>
+            </div>
+            
+            <!-- Testimonial -->
+            <div class="testimonial-card p-4 rounded-lg shadow-sm">
+              <div class="flex items-start">
+                <img src="https://via.placeholder.com/50" alt="Client" class="rounded-full w-12 h-12 object-cover mr-3">
+                <div>
+                  <p class="text-sm italic text-gray-700">"The Edmonds Twins completely transformed my body in just 12 weeks. Their personalized approach made all the difference!"</p>
+                  <p class="text-xs font-medium text-purple-800 mt-2">- Sarah J., Lost 18kg</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Scarcity Message -->
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-4 rounded-lg">
+              <div class="flex">
+                <div class="flex-shrink-0 text-purple-500">
+                  <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <div class="ml-3">
+                  <p class="text-sm text-purple-700">
+                    <span class="font-medium">Only 3 spots available this month!</span> Complete your application now to secure your spot.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Navigation Buttons -->
+          <div class="mt-8 flex justify-between">
+            <button type="button" onclick="prevStep()" class="btn-secondary text-gray-700 py-3 px-6 rounded-lg font-medium inline-flex items-center">
+              <i class="fas fa-arrow-left mr-2"></i> Back
+            </button>
+            <button type="button" onclick="submitForm()" class="btn-primary text-white py-3 px-6 rounded-lg font-medium inline-flex items-center">
+              Submit Application <i class="fas fa-paper-plane ml-2"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+      
+      <!-- Success State (Hidden Initially) -->
+      <div id="successState" class="success-state hidden p-8 text-center rounded-xl">
+        <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mb-4">
+          <i class="fas fa-check text-green-600 text-2xl"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-green-800 mb-2">Application Submitted!</h3>
+        <div class="text-green-600 mb-6">
+          <p>Thank you for your application! We'll review your information and get back to you within 24 hours.</p>
+          <p class="mt-2">Check your email for confirmation.</p>
+        </div>
+        <button onclick="resetForm()" class="btn-primary text-white py-3 px-6 rounded-lg font-medium inline-flex items-center">
+          <span>Submit Another Application</span>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Testimonial Carousel -->
+    <div class="mt-12">
+      <h3 class="text-center text-xl font-bold text-purple-900 mb-6">Success Stories From Our Clients</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card p-6 rounded-lg">
+          <div class="flex items-center mb-4">
+            <img src="https://via.placeholder.com/60" alt="Client" class="rounded-full w-12 h-12 object-cover mr-3">
+            <div>
+              <p class="font-medium text-purple-900">Michael T.</p>
+              <p class="text-xs text-purple-600">Lost 12kg in 10 weeks</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-700 italic">"The nutrition plan was a game-changer. I've never felt better!"</p>
+          <div class="mt-3 flex text-yellow-400">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card p-6 rounded-lg">
+          <div class="flex items-center mb-4">
+            <img src="https://via.placeholder.com/60" alt="Client" class="rounded-full w-12 h-12 object-cover mr-3">
+            <div>
+              <p class="font-medium text-purple-900">Jessica L.</p>
+              <p class="text-xs text-purple-600">Gained 5kg muscle in 12 weeks</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-700 italic">"The workouts were challenging but perfectly tailored to my goals."</p>
+          <div class="mt-3 flex text-yellow-400">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card p-6 rounded-lg">
+          <div class="flex items-center mb-4">
+            <img src="https://via.placeholder.com/60" alt="Client" class="rounded-full w-12 h-12 object-cover mr-3">
+            <div>
+              <p class="font-medium text-purple-900">David R.</p>
+              <p class="text-xs text-purple-600">Transformed in 6 months</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-700 italic">"The accountability and support made all the difference in my journey."</p>
+          <div class="mt-3 flex text-yellow-400">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile Sticky Footer -->
+    <div id="formFooter" class="mobile-sticky-footer hidden md:hidden">
+      <button id="nextButton" type="button" onclick="nextStep()" class="btn-primary w-full text-white py-3 px-4 rounded-lg font-medium">
+        Continue to Next Step
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Form Navigation
+    let currentStep = 1;
+    const totalSteps = 4;
+    
+    // Initialize form
+    document.addEventListener('DOMContentLoaded', function() {
+      updateProgress();
+      checkMobileFooter();
+      
+      // Set focus on first input
+      document.getElementById('fullName').focus();
+      
+      // Listen for window resize to handle mobile footer
+      window.addEventListener('resize', checkMobileFooter);
+      
+      // Update mobile footer button text
+      updateMobileButtonText();
+    });
+    
+    // Update progress bar and step indicator
+    function updateProgress() {
+      const progressPercentage = (currentStep / totalSteps) * 100;
+      document.getElementById('progressBar').style.width = `${progressPercentage}%`;
+      
+      let stepText = '';
+      switch(currentStep) {
+        case 1:
+          stepText = 'Step 1 of 4: Tell Us About Yourself';
+          break;
+        case 2:
+          stepText = 'Step 2 of 4: Help Us Understand You';
+          break;
+        case 3:
+          stepText = 'Step 3 of 4: Your Goals & Preferences';
+          break;
+        case 4:
+          stepText = 'Step 4 of 4: Final Commitment';
+          break;
+      }
+      document.getElementById('stepIndicator').textContent = stepText;
+    }
+    
+    // Show/hide mobile footer based on screen size
+    function checkMobileFooter() {
+      if (window.innerWidth <= 768) {
+        document.getElementById('formFooter').classList.remove('hidden');
+      } else {
+        document.getElementById('formFooter').classList.add('hidden');
+      }
+    }
+    
+    // Update mobile button text based on current step
+    function updateMobileButtonText() {
+      const button = document.getElementById('nextButton');
+      if (!button) return;
+      
+      if (currentStep === totalSteps) {
+        button.textContent = 'Submit Application';
+        button.setAttribute('onclick', 'submitForm()');
+      } else {
+        button.textContent = 'Continue to Next Step';
+        button.setAttribute('onclick', 'nextStep()');
+      }
+    }
+    
+    // Navigation functions
+    function nextStep() {
+      if (validateStep(currentStep)) {
+        if (currentStep < totalSteps) {
+          document.getElementById(`step${currentStep}`).classList.add('hidden');
+          currentStep++;
+          document.getElementById(`step${currentStep}`).classList.remove('hidden');
+          updateProgress();
+          updateMobileButtonText();
+          
+          // Scroll to top of form on step change
+          document.getElementById('formContainer').scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+    
+    function prevStep() {
+      if (currentStep > 1) {
+        document.getElementById(`step${currentStep}`).classList.add('hidden');
+        currentStep--;
+        document.getElementById(`step${currentStep}`).classList.remove('hidden');
+        updateProgress();
+        updateMobileButtonText();
+      }
+    }
+    
+    // Validate current step before proceeding
+    function validateStep(step) {
+      let isValid = true;
+      let errorMessage = '';
+      
+      switch(step) {
+        case 1:
+          const fullName = document.getElementById('fullName').value;
+          const phone = document.getElementById('phone').value;
+          const email = document.getElementById('email').value;
+          
+          if (!fullName) {
+            errorMessage = 'Please enter your full name';
+            document.getElementById('fullName').focus();
+          } else if (!phone) {
+            errorMessage = 'Please enter your phone number';
+            document.getElementById('phone').focus();
+          } else if (!email) {
+            errorMessage = 'Please enter your email address';
+            document.getElementById('email').focus();
+          } else if (!isValidEmail(email)) {
+            errorMessage = 'Please enter a valid email address';
+            document.getElementById('email').focus();
+          }
+          
+          if (!fullName || !phone || !email || !isValidEmail(email)) {
+            isValid = false;
+          }
+          break;
+          
+        case 2:
+          const gender = document.querySelector('input[name="gender"]:checked');
+          const referral = document.getElementById('referral').value;
+          
+          if (!gender) {
+            errorMessage = 'Please select your gender';
+          } else if (!referral) {
+            errorMessage = 'Please tell us how you heard about us';
+            document.getElementById('referral').focus();
+          }
+          
+          if (!gender || !referral) {
+            isValid = false;
+          }
+          break;
+          
+        case 3:
+          const services = document.querySelectorAll('input[name="service"]:checked');
+          const goals = document.getElementById('goals').value;
+          const mainGoal = document.querySelector('input[name="mainGoal"]:checked');
+          
+          if (services.length === 0) {
+            errorMessage = 'Please select at least one service you\'re interested in';
+          } else if (!goals) {
+            errorMessage = 'Please tell us about your goals and challenges';
+            document.getElementById('goals').focus();
+          } else if (!mainGoal) {
+            errorMessage = 'Please select your main goal';
+          }
+          
+          if (services.length === 0 || !goals || !mainGoal) {
+            isValid = false;
+          }
+          break;
+          
+        case 4:
+          const investment = document.querySelector('input[name="investment"]:checked');
+          
+          if (!investment) {
+            errorMessage = 'Please let us know if you\'re ready to invest in yourself';
+            isValid = false;
+          }
+          break;
+      }
+      
+      if (!isValid) {
+        showErrorToast(errorMessage);
+      }
+      
+      return isValid;
+    }
+    
+    // Simple email validation
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+    
+    // Show error toast message
+    function showErrorToast(message) {
+      // Remove any existing toast first
+      const existingToast = document.querySelector('.error-toast');
+      if (existingToast) {
+        existingToast.remove();
+      }
+      
+      const toast = document.createElement('div');
+      toast.className = 'error-toast fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg flex items-center z-50';
+      toast.innerHTML = `
+        <i class="fas fa-exclamation-circle mr-2"></i>
+        <span>${message}</span>
+      `;
+      document.body.appendChild(toast);
+      
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'transition-opacity', 'duration-300');
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+    
+    function submitForm() {
+  if (validateStep(currentStep)) {
+    const formData = {
+      fullName: document.getElementById('fullName').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      instagram: document.getElementById('instagram').value.trim(),
+      gender: document.querySelector('input[name="gender"]:checked')?.value || '',
+      referral: document.getElementById('referral').value,
+      service: Array.from(document.querySelectorAll('input[name="service"]:checked')).map(cb => cb.value),
+      goals: document.getElementById('goals').value.trim(),
+      mainGoal: document.querySelector('input[name="mainGoal"]:checked')?.value || '',
+      investment: document.querySelector('input[name="investment"]:checked')?.value || ''
+    };
+
+    fetch('https://script.google.com/macros/s/AKfycbzjrl0zsK7wHiznpVbYe4jPQL6mcQ7mqg_7_M64u8n7meynX6QaxHrblyLprpH7O3jH/exec', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+      // Hide form
+      document.getElementById('applicationForm').style.display = 'none';
+      // Show success message
+      document.getElementById('successState').classList.remove('hidden');
+      // Hide mobile footer
+      document.getElementById('formFooter').classList.add('hidden');
+      // Scroll to success message
+      document.getElementById('successState').scrollIntoView({ behavior: 'smooth' });
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      showErrorToast("There was an issue submitting your application.");
+    });
+  }
+}
+    
+    function resetForm() {
+      // Reset form
+      document.getElementById('applicationForm').reset();
+      document.getElementById('applicationForm').style.display = 'block';
+      
+      // Hide success message
+      document.getElementById('successState').classList.add('hidden');
+      
+      // Reset to step 1
+      document.querySelectorAll('.step').forEach(step => {
+        step.classList.add('hidden');
+      });
+      currentStep = 1;
+      document.getElementById('step1').classList.remove('hidden');
+      updateProgress();
+      updateMobileButtonText();
+      
+      // Show mobile footer if on mobile
+      checkMobileFooter();
+      
+      // Set focus on first input
+      document.getElementById('fullName').focus();
+    }
+  </script>
+</body>
+</html>
